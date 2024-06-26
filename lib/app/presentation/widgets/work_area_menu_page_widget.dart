@@ -1,7 +1,6 @@
 part of 'custom_widgets.dart';
 
 class WorkAreaMenuPageWidget extends StatefulWidget {
-
   final RxBool peticionServer;
   final String title;
   final String name;
@@ -30,7 +29,6 @@ class WorkAreaMenuPageWidget extends StatefulWidget {
     this.pantallaIrAtras,
     this.name = '',
     this.foto64,
-
   });
 
   @override
@@ -59,28 +57,29 @@ class _WorkAreaMenuPageWidgetState extends State<WorkAreaMenuPageWidget> {
     });
   }
 
-  final LocalStoreImpl _localStoreImpl =
-  Get.find<LocalStoreImpl>();
+  final LocalStoreImpl _localStoreImpl = Get.find<LocalStoreImpl>();
 
   _verificaDatos() async {
     print("MENU: verificando datos");
 
-    userPref = await _localStoreImpl.getDatosUsuario();
-    acuerdoPref = await _localStoreImpl.getDatosAcuerdo();
-    mailPref = await _localStoreImpl.getDatosMail();
+   // userPref = await _localStoreImpl.getDatosUsuario();
+   // acuerdoPref = await _localStoreImpl.getDatosAcuerdo();
+    //mailPref = await _localStoreImpl.getDatosMail();
   }
 
   @override
   Widget build(BuildContext context) {
     final responsive = ResponsiveUtil();
-    Widget wgImgFondo = SingleChildScrollView(child: Container(
-      height: responsive.alto,
-      width: responsive.ancho,
-      child: Image.asset(
-        widget.imgFondo ?? AppImages.imgareaFondo,
-        fit: BoxFit.fill,
+    Widget wgImgFondo = SingleChildScrollView(
+      child: Container(
+        height: responsive.alto,
+        width: responsive.ancho,
+        child: Image.asset(
+          widget.imgFondo ?? AppImages.imgareaFondo,
+          fit: BoxFit.fill,
+        ),
       ),
-    ),);
+    );
 
     return Scaffold(
         bottomNavigationBar: bannerInferior(responsive),
@@ -91,79 +90,34 @@ class _WorkAreaMenuPageWidgetState extends State<WorkAreaMenuPageWidget> {
             onTap: () {
               FocusScope.of(context).requestFocus(FocusNode());
             },
-            child: SafeArea(child: SingleChildScrollView(child: Stack(
-              children: [
-                wgImgFondo,
-                Column(
+            child: SafeArea(
+              child: SingleChildScrollView(
+                child: Stack(
                   children: [
-
-                    widget.title == '' ? Container() : Text(
-                      widget.title,
-                      textAlign:
-                      TextAlign.center,
-                      style: TextStyle(
-                        fontWeight:
-                        FontWeight.bold,
-                        fontSize: responsive.anchoP(7),
-                        color: const Color(0xFF4E7E4B),
-                      ),
+                    wgImgFondo,
+                    Column(
+                      children: [
+                        Container(
+                          child: widget.contenido,
+                          height: responsive.altoP(85),
+                        )
+                      ],
                     ),
-                    widget.foto64 == null ? Container() : Container(
-                      width: responsive.ancho,
-                      margin: EdgeInsets.only(
-                        top: responsive.altoP(2.0),
-                      ),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                              AppConfig.radioBordecajas),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.blue.withOpacity(0.1),
-                                blurRadius: 20)
-                          ]),
-                      child: Center(
-                        child: Column(
-                          children: <Widget>[
-                            imgPerfilRedonda(size: 30, img: widget.foto64,),
-                            SizedBox(height: responsive.altoP(1.0),),
-                            Text(
-                              widget.name,
-                              textAlign:
-                              TextAlign.center,
-                              style: TextStyle(
-                                  fontWeight:
-                                  FontWeight.bold,
-                                  fontSize: responsive.anchoP(4.5),
-                                  color: Colors.black
-                                      .withOpacity(
-                                      0.8)),
-                            )
-                          ],
-
-                        ),
-
-                      ),
-
-                    ),
-                    widget.foto64 == null ? Container() : SizedBox(
-                      height: responsive.altoP(2),),
-                    widget.contenido,
-
+                    Obx(() => CargandoWidget(
+                          mostrar: widget.peticionServer.value,
+                        ))
                   ],
                 ),
-                Obx(() =>
-                    CargandoWidget(
-                      mostrar: widget.peticionServer.value,
-                    ))
-              ],
-            ),),)
-        ));
+              ),
+            )));
   }
 
   Widget imgBanner(
-      {required GestureTapCallback onTap, required String ruta, required ResponsiveUtil responsive}) {
+      {required GestureTapCallback onTap,
+      required String ruta,
+      required ResponsiveUtil responsive}) {
     double size =
-    responsive.isVertical() ? responsive.altoP(8) : responsive.anchoP(8);
+        responsive.isVertical() ? responsive.altoP(8) : responsive.anchoP(8);
     return Container(
         height: size,
         width: size,
@@ -189,7 +143,6 @@ class _WorkAreaMenuPageWidgetState extends State<WorkAreaMenuPageWidget> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
-
         children: <Widget>[
           imgBanner(
               onTap: launchURLFace,
@@ -214,14 +167,12 @@ class _WorkAreaMenuPageWidgetState extends State<WorkAreaMenuPageWidget> {
 
   getAppBar() {
     return AppBar(
-      backgroundColor:  const Color(0xFF485A46),
+      backgroundColor: const Color(0xFF485A46),
       title: const Text(
         textAlign: TextAlign.justify,
         "BIENVENIDO A ECOSPIRIT",
         style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-            color: Colors.white),
+            fontSize: 20, fontWeight: FontWeight.w700, color: Colors.white),
       ),
       leading: Builder(
         builder: (BuildContext context) {
@@ -231,9 +182,7 @@ class _WorkAreaMenuPageWidgetState extends State<WorkAreaMenuPageWidget> {
             onPressed: () {
               Scaffold.of(context).openDrawer();
             },
-            tooltip: MaterialLocalizations
-                .of(context)
-                .openAppDrawerTooltip,
+            tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
           );
         },
       ),
@@ -249,7 +198,6 @@ class _WorkAreaMenuPageWidgetState extends State<WorkAreaMenuPageWidget> {
   _buildDrawer(BuildContext context) {
     const String image = AppImages.imgSplash;
     return ClipPath(
-
       /// ---------------------------
       /// Building Shape for drawer .
       /// ---------------------------
@@ -266,7 +214,6 @@ class _WorkAreaMenuPageWidgetState extends State<WorkAreaMenuPageWidget> {
               boxShadow: const [BoxShadow(color: Colors.black45)]),
           width: 300,
           child: SafeArea(
-
             /// ---------------------------
             /// Building scrolling  content for drawer .
             /// ---------------------------
@@ -282,7 +229,7 @@ class _WorkAreaMenuPageWidgetState extends State<WorkAreaMenuPageWidget> {
                         color: Colors.red,
                       ),
                       onPressed: () {
-                       // _localStoreImpl.setDatosMail('');
+                        // _localStoreImpl.setDatosMail('');
                         //_localStoreImpl.setDatosUsuario('');
                         //_localStoreImpl.setDatosAcuerdo('No Aceptado');
                         Get.back();
@@ -300,7 +247,7 @@ class _WorkAreaMenuPageWidgetState extends State<WorkAreaMenuPageWidget> {
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         gradient: LinearGradient(
-                            colors: [Colors.black54,Colors.black87 ])),
+                            colors: [Colors.black54, Colors.black87])),
                     child: const CircleAvatar(
                       radius: 80,
                       backgroundImage: AssetImage(image),
@@ -321,7 +268,6 @@ class _WorkAreaMenuPageWidgetState extends State<WorkAreaMenuPageWidget> {
                   ),
                   Text(
                     mailPref != '' ? mailPref : "www.ecospirit.ec",
-
                     style: TextStyle(color: active, fontSize: 12.0),
                   ),
 
@@ -332,21 +278,16 @@ class _WorkAreaMenuPageWidgetState extends State<WorkAreaMenuPageWidget> {
                     Get.offAllNamed(AppRoutes.SPLASH);
                   }),
                   _buildDivider(),
-                  _buildRow(
-                      Icons.share, "Compartir Aplicación",
+                  _buildRow(Icons.share, "Compartir Aplicación",
                       showBadge: true, numNotificaciones: 0, onTap: () {
                     //oculta el drawer
-                    Share.share(
-                        "");
+                    Share.share("");
                     _key.currentState?.openEndDrawer();
                   }),
                   _buildDivider(),
-                    _buildRow(Icons.person_pin, "Perfil", onTap: () {
-                 verificaTConexion();
-
-
-                    }),
-
+                  _buildRow(Icons.person_pin, "Perfil", onTap: () {
+                    verificaTConexion();
+                  }),
 
                   _buildDivider(),
                   Text(
@@ -361,6 +302,7 @@ class _WorkAreaMenuPageWidgetState extends State<WorkAreaMenuPageWidget> {
       ),
     );
   }
+
   verificarGps() async {
     //se verifica si el GPS del dispositivo seta activo y tiene permisos
     bool verificarGps = await gpsController.verificarGPS();
@@ -370,11 +312,10 @@ class _WorkAreaMenuPageWidgetState extends State<WorkAreaMenuPageWidget> {
       if (!gpsController.ubicacionLista.value) {
         DialogosAwesome.getInformation(
             descripcion: "Las coordenas aun no estan lista vuelva a intentar");
-      }else{
-        if (acuerdoPref=="Aceptado"){
-
+      } else {
+        if (acuerdoPref == "Aceptado") {
           Get.toNamed(AppRoutes.REGISTROUSUARIO);
-        }else{
+        } else {
           Get.toNamed(AppRoutes.ACUERDO);
         }
       }
@@ -388,12 +329,12 @@ class _WorkAreaMenuPageWidgetState extends State<WorkAreaMenuPageWidget> {
         estadoConex = 'S';
         print('connected');
         verificarGps();
-
       }
     } on SocketException catch (_) {
-    DialogosAwesome.getError(descripcion: 'No tiene conexión a Internet');
+      DialogosAwesome.getError(descripcion: 'No tiene conexión a Internet');
     }
   }
+
   /// ---------------------------
   /// Building divider for drawer .
   /// ---------------------------
@@ -410,8 +351,8 @@ class _WorkAreaMenuPageWidgetState extends State<WorkAreaMenuPageWidget> {
 
   Widget _buildRow(IconData icon, String title,
       {bool showBadge = false,
-        int numNotificaciones = 0,
-        required GestureTapCallback onTap}) {
+      int numNotificaciones = 0,
+      required GestureTapCallback onTap}) {
     final TextStyle tStyle = TextStyle(color: active, fontSize: 16.0);
     return InkWell(
       onTap: onTap,
