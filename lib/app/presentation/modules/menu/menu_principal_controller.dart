@@ -42,8 +42,8 @@ class MenuPrincipalController extends GetxController {
 
   _verificaDatos() async {
     print("SPLASH: verificando datos");
-    userPref.value = await _localStoreImpl.getDatosUsuario();
-    acuerdo = await _localStoreImpl.getDatosAcuerdo();
+    //userPref.value = await _localStoreImpl.getDatosUsuario();
+    //acuerdo = await _localStoreImpl.getDatosAcuerdo();
   }
 
   verificarGps() async {

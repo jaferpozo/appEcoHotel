@@ -19,6 +19,7 @@ import '../widgets/custom_widgets.dart';
 import 'controllers.dart';
 import 'login/local_widgets/wgLogin.dart';
 import 'login/local_widgets/workAreaLoginPageWidget.dart';
+import 'menu/local_widgets/desing.dart';
 
 
 part 'splash/splash_page.dart';
