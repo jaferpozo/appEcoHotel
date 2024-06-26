@@ -30,7 +30,7 @@ class _BotonesWidgetState extends State<BotonesWidget> {
 
       child: CupertinoButton(
         borderRadius: BorderRadius.circular(15),
-        color: Color(0xFF06245B),
+        color: Colors.redAccent,
         onPressed: widget.onPressed,
         child: SingleChildScrollView(
           scrollDirection:Axis.horizontal ,
@@ -49,7 +49,7 @@ class _BotonesWidgetState extends State<BotonesWidget> {
               Text(
                 widget.title,
                 style: TextStyle(
-                    fontSize: responsive.anchoP(AppConfig.tamTexto + 1.0)),
+                    fontSize: responsive.anchoP(AppConfig.tamTexto + 2)),
               ):Container()
             ],
           ),),

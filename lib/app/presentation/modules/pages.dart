@@ -24,5 +24,6 @@ import 'login/local_widgets/workAreaLoginPageWidget.dart';
 part 'splash/splash_page.dart';
 part 'menu/menu_principal_page.dart';
 part 'login/login_page.dart';
+part 'registroUsuario/registro_usuario_page.dart';
 
 

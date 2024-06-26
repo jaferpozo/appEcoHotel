@@ -247,7 +247,7 @@ class _WorkAreaMenuPageWidgetState extends State<WorkAreaMenuPageWidget> {
   final Color divider = Colors.grey.shade600;
 
   _buildDrawer(BuildContext context) {
-    const String image = AppImages.icon_clave;
+    const String image = AppImages.imgSplash;
     return ClipPath(
 
       /// ---------------------------
