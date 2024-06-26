@@ -21,6 +21,7 @@ import '../../core/values/app_colors.dart';
 import '../../core/values/app_images.dart';
 import '../../data/repository/data_repositories.dart';
 import '../gps/gps_impl_helper.dart';
+import '../modules/menu/local_widgets/desing.dart';
 import '../routes/app_routes.dart';
 
 part 'work_area_login_page_widget.dart';
