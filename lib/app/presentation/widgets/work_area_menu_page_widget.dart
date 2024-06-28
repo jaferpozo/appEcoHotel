@@ -196,7 +196,7 @@ class _WorkAreaMenuPageWidgetState extends State<WorkAreaMenuPageWidget> {
   final Color divider = Colors.grey.shade600;
 
   _buildDrawer(BuildContext context) {
-    const String image = AppImages.icon_clave;
+    const String image = AppImages.imgSplash;
     return ClipPath(
       /// ---------------------------
       /// Building Shape for drawer .
@@ -286,7 +286,7 @@ class _WorkAreaMenuPageWidgetState extends State<WorkAreaMenuPageWidget> {
                   }),
                   _buildDivider(),
                   _buildRow(Icons.person_pin, "Perfil", onTap: () {
-                    verificaTConexion();
+                    Get.offAllNamed(AppRoutes.REGISTROUSUARIO);
                   }),
 
                   _buildDivider(),

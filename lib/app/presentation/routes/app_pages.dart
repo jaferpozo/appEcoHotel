@@ -31,6 +31,10 @@ class AppPages {
         name: AppRoutes.MENU,
         page: () => MenuPrincipalPage(),
         binding: MenuPrincipalBinding()),
+    getPageConfig(
+        name: AppRoutes.REGISTROUSUARIO,
+        page: () => RegistroUsuarioPage(),
+        binding: RegistroUsuarioBinding()),
 
   ];
 }

@@ -31,5 +31,6 @@ import 'package:geolocator/geolocator.dart' as myGeolocator;
 part 'splash/splash_controller.dart';
 part 'menu/menu_principal_controller.dart';
 part 'login/login_controller.dart';
+part 'registroUsuario/registro_usuario_controller.dart';
 
 

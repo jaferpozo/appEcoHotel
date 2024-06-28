@@ -77,49 +77,6 @@ class _WorkAreaLoginPageWidgetState extends State<WorkAreaLoginPageWidget> {
       ),
     );
 
-
-    Widget wgImgPerfil = Container(
-
-      margin: EdgeInsets.only(
-        top: responsive.altoP(8.0),
-      ),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppConfig.radioBordecajas),
-          boxShadow: [
-            BoxShadow(color: Colors.blue.withOpacity(0.1), blurRadius: 45)
-          ]),
-      child: Center(
-        child: Column(
-          children: <Widget>[
-            imgPerfilRedonda(
-              size: 30,
-              img: widget.imgPerfil,
-            ),
-            widget.title != ''
-                ? Text(
-              widget.title,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: widget.sizeTittle == 0
-                      ? responsive.anchoP(9)
-                      : responsive.anchoP(widget.sizeTittle)),
-            )
-                : Container(),
-            const SizedBox(height: 5,),
-            widget.mostrarVersion
-                ? Text(
-              'Versión 1: Build-' + version + ' ' + Host.getAmbiente(),
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white.withOpacity(0.5)),
-            )
-                : Container()
-          ],
-        ),
-      ),
-    );
     Widget wgBtnAtras = Container(
       width: responsive.ancho,
       height: responsive.isVertical()
@@ -162,13 +119,10 @@ class _WorkAreaLoginPageWidgetState extends State<WorkAreaLoginPageWidget> {
                       mainAxisAlignment:
                       MainAxisAlignment.center,
                       children: <Widget>[
-                        wgImgPerfil,
-
                         Column(
                           children:
-                          widget.contenido ?? [Container()],
+                          widget.contenido,
                         ),
-
                         SizedBox(height:responsive.altoP(5),),
                       ],
                     )),),
@@ -177,9 +131,6 @@ class _WorkAreaLoginPageWidgetState extends State<WorkAreaLoginPageWidget> {
               ))
               ],
             )),));
-
-
-
   }
 }
 
