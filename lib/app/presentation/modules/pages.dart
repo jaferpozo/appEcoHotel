@@ -26,5 +26,6 @@ import 'menu/local_widgets/detalle_habitacion.dart';
 part 'splash/splash_page.dart';
 part 'menu/menu_principal_page.dart';
 part 'login/login_page.dart';
+part 'registroUsuario/registro_usuario_page.dart';
 
 

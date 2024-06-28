@@ -180,63 +180,7 @@ class MenuPrincipalPage extends GetView<MenuPrincipalController> {
           'OPCIONES VIOLENCIA DE GÉNERO', prefs.getIdUsuario(), _ip, context);
       Navigator.pushNamed(context, AppConfig.listaViolenciaPage);*/
     }
-    if (index == 3) {
-      Map<String, String> data = {
-        "id": "1",
-      };
-      //vehiculos
-      Get.toNamed(AppRoutes.SERVICIOS, parameters: data);
-      String _ip = await UtilidadesUtil.getNetworkInfo();
-    }
-    if (index == 4) {
-      Map<String, String> data = {
-        "id": "2",
-      };
-      Get.toNamed(AppRoutes.SERVICIOS, parameters: data);
-      //AlertasWidget.alertaBannerCovid(ctxt: ctx);
-      // Navigator.pushNamed(context, AppConfig.PhotoPreviewScreen);
-    }
-    if (index == 6) {
-      //servicios
 
-      String _ip = await UtilidadesUtil.getNetworkInfo();
-      /* Auditoria auditoria = new Auditoria();
-      auditoria.grabaAccion(ConstApi.latitud, ConstApi.longitud, 'COUSULTA',
-          'LISTA SERVICIOS POLCO', prefs.getIdUsuario(), _ip, context);
-      Navigator.pushNamed(context, AppConfig.listaServiciosPolcoPage);*/
-    }
-    if (index == 7) {
-      //tips
-
-      String _ip = await UtilidadesUtil.getNetworkInfo();
-      /*Auditoria auditoria = new Auditoria();
-      auditoria.grabaAccion(ConstApi.latitud, ConstApi.longitud, 'COUSULTA',
-          'MEDIDAS DE AUTOPROTECCIÓN', prefs.getIdUsuario(), _ip, context);
-      Navigator.pushNamed(context, AppConfig.listaMedidasAutoproteccionPage);*/
-    }
-
-    if (index == 8) {
-      // registreToken();
-      //noticias
-
-      String _ip = await UtilidadesUtil.getNetworkInfo();
-      /*  Auditoria auditoria = new Auditoria();
-      auditoria.grabaAccion(ConstApi.latitud, ConstApi.longitud, 'ACCESO',
-          'NOTICIAS', prefs.getIdUsuario(), _ip, context);
-      Navigator.pushNamed(context, AppConfig.ListaNoticiasPage,
-          arguments: '8888888888888888888881');*/
-    }
-
-    if (index == 66) {
-      //desaparecidos
-
-      String _ip = await UtilidadesUtil.getNetworkInfo();
-      /*   Auditoria auditoria = new Auditoria();
-      auditoria.grabaAccion(ConstApi.latitud, ConstApi.longitud, 'ACCESO',
-          'OPCIONES ALERTA DESAPARECIDOS', prefs.getIdUsuario(), _ip, context);
-      Navigator.pushNamed(context, AppConfig.OpcionesAlertaDesaparecidos,
-          arguments: '8888888888888888888881');*/
-    }
   }
 
   static void llamarEcu(BuildContext ctx) async {

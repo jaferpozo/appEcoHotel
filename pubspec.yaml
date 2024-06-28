@@ -16,6 +16,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   get: ^4.6.6 #manejador de estados
+  flutter_launcher_icons: ^0.13.1
   google_fonts: ^6.2.0
   equatable: ^2.0.5 #Permite realizar una comparacion de los objetos de manera mas profunda (Permite hacer testing)
   http: ^1.2.0 # Conectar con proveedor - Apis
@@ -50,8 +51,8 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/icon/icon_mi_upc.png"
-  adaptive_icon_background: "assets/icon/icon_mi_upc.png"
+  image_path: "assets/icon/icono.PNG"
+  adaptive_icon_background: "assets/icon/icono.PNG"
   flutter_lints: ^3.0.1
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
