@@ -15,6 +15,7 @@ class AppImages{
   static const imgSplash = _rutaImg+ "splash.png";
   static const icon_clave = _rutaImg + "icon_clave.png";
   static const iconIdentificacion = _rutaIcon + "ic_identificacion.png";
+  static const imgFondoRegistro = _rutaImg + "registro.png";
 
   static const imgFacebook = _rutaImg+ "facebook.png";
   static const imgYoutube = _rutaImg+ "youtube.png";

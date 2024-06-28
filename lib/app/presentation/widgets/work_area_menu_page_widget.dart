@@ -286,7 +286,7 @@ class _WorkAreaMenuPageWidgetState extends State<WorkAreaMenuPageWidget> {
                   }),
                   _buildDivider(),
                   _buildRow(Icons.person_pin, "Perfil", onTap: () {
-                    verificaTConexion();
+                    Get.offAllNamed(AppRoutes.REGISTROUSUARIO);
                   }),
 
                   _buildDivider(),

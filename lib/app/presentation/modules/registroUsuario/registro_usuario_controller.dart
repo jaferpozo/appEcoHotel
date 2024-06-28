@@ -178,21 +178,21 @@ class RegistroUsuarioController extends GetxController {
         peticionServerState(false);
         return;
       } else {
-        String mensaje = '';
+        String mensaje = 'true|true';
         final splitted = mensaje.split('|');
         if (splitted[0] == 'true') {
-          _LocalStoreImpl.setDatosUsuario(splitted[1]);
-          _LocalStoreImpl.setDatosMail(controllerCorreo.text);
+         //_LocalStoreImpl.setDatosUsuario(splitted[1]);
+          //_LocalStoreImpl.setDatosMail(controllerCorreo.text);
           DialogosAwesome.getSucess(
               descripcion: "Se ha registrado existosamente su usuario.",
-              title: 'Mi Upc',
+              title: 'ECOSPIRIT',
               btnOkOnPress: () {
                 Get.offAllNamed(AppRoutes.MENU);
               });
         } else {
           DialogosAwesome.getError(
               descripcion: mensaje,
-              title: 'Mi Upc',
+              title: 'ECOSPIRIT',
               btnOkOnPress: () {
                 // Get.back();
               });

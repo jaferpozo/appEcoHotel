@@ -6,6 +6,7 @@ import '../../../../core/app_config.dart';
 import '../../../../core/utils/responsiveUtil.dart';
 import '../../../../core/values/app_images.dart';
 import '../../../../core/values/app_strings.dart';
+import '../../../routes/app_routes.dart';
 import '../../../widgets/custom_widgets.dart';
 import '../../controllers.dart';
 
@@ -176,7 +177,7 @@ class _WgLoginState extends State<WgLogin> {
         Center(
           child: TextButton(
             onPressed: () {
-              // Implementar acción de "Sign Up Now"
+              Get.offAllNamed(AppRoutes.REGISTROUSUARIO);
             },
             child: Text(
               'No tienes una Cuenta? Registrate..!!',

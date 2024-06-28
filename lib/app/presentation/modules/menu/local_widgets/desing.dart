@@ -23,7 +23,7 @@ class Desing extends StatelessWidget {
                 title: 'Nusapenida, Indonesia',
                 distance: '987 kilometers away',
                 date: 'Jan 1 - 6',
-                price: '\$234 /night',
+                price: '\$234 /noche',
                 rating: 3.0,
               ),
               buildListItem(
@@ -31,7 +31,7 @@ class Desing extends StatelessWidget {
                 title: 'Nusapenida, Indonesia',
                 distance: '987 kilometers away',
                 date: 'Jan 1 - 6',
-                price: '\$234 /night',
+                price: '\$234 /noche',
                 rating: 5.0,
               ),
               buildListItem(
@@ -39,7 +39,7 @@ class Desing extends StatelessWidget {
                 title: 'Nusapenida, Indonesia',
                 distance: '987 kilometers away',
                 date: 'Jan 1 - 6',
-                price: '\$234 /night',
+                price: '\$234 /noche',
                 rating: 5.0,
               ),
               // Agrega más elementos aquí

@@ -67,7 +67,8 @@ class LoginController extends GetxController {
        peticionServerState(true);
 
        //Encryptamos la clave
-       String cedula = _user.substring(4);
+      // String cedula = _user.substring(4);
+       String cedula = '022';
        print("cedula ${cedula}");
        //_pass=_pass+cedula;
        print("cedula ${_pass}");

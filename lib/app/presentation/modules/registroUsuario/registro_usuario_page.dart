@@ -21,7 +21,7 @@ class RegistroUsuarioPage extends GetView<RegistroUsuarioController> {
           height: responsive.altoP(100),
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(AppImages.imgarea),
+              image: AssetImage(AppImages.imgFondoRegistro),
               fit: BoxFit.fill,
             ),
           ),
@@ -32,7 +32,9 @@ class RegistroUsuarioPage extends GetView<RegistroUsuarioController> {
           children: <Widget>[
             Center(
               child: Container(
-                child: Image.asset(AppImages.imgCabecera),
+                padding: EdgeInsets.symmetric(vertical: 4.0),
+                height: responsive.altoP(14),
+                child: Image.asset(AppImages.imgSplash),
 
               ),
             ),
@@ -42,39 +44,27 @@ class RegistroUsuarioPage extends GetView<RegistroUsuarioController> {
                     padding: EdgeInsets.symmetric(horizontal: 20.0),
                     child: Column(
                       children: <Widget>[
-                        Divider(
-                          color: AppConfig.colorBarras,
-                        ),
                         const Divider(
-                          height: 5.0,
-                          color: Colors.transparent,
+                          color: Colors.black87,
                         ),
-                        Text(
-                          'LA POLICÍA NACIONAL DEL ECUADOR',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                              color: AppConfig.colorBarras),
-                        ),
-                        const Divider(
-                          height: 5.0,
-                          color: Colors.transparent,
-                        ),
-                        Text(
-                          'Le da la más Cordial Bienvenida a su aplicativo\n' +'MI UPC',
 
+                        const Divider(
+                          height: 5.0,
+                          color: Colors.transparent,
+                        ),
+                        const Text(
+                          'Le da la más Cordial Bienvenida a su aplicativo móvil',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 15,
                               color: Colors.black),
                         ),
-                        Divider(
+                        const Divider(
                           height: 5.0,
                           color: Colors.transparent,
                         ),
-                        Text(
+                        const Text(
                           'INSTRUCCIONES',
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -82,11 +72,11 @@ class RegistroUsuarioPage extends GetView<RegistroUsuarioController> {
                               fontSize: 18,
                               color: Colors.black),
                         ),
-                        Divider(
+                        const Divider(
                           height: 5.0,
                           color: Colors.transparent,
                         ),
-                        Text(
+                        const Text(
                           'Favor registre los siguientes datos para continuar.',
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -94,7 +84,7 @@ class RegistroUsuarioPage extends GetView<RegistroUsuarioController> {
                               fontSize: 12,
                               color: Colors.black),
                         ),
-                        Divider(
+                        const Divider(
                           height: 5.0,
                           color: Colors.transparent,
                         ),
@@ -161,17 +151,17 @@ class RegistroUsuarioPage extends GetView<RegistroUsuarioController> {
             _TxtPrimerApellido2(responsive)
           ],
         ),
-        Divider(
+        const Divider(
           height: 10.0,
           color: Colors.transparent,
         ),
         _TxtCelular(responsive),
-        Divider(
+        const Divider(
           height: 10.0,
           color: Colors.transparent,
         ),
         _TxtMail(responsive),
-        Divider(
+        const Divider(
           height: 10.0,
           color: Colors.transparent,
         ),
@@ -196,7 +186,7 @@ class RegistroUsuarioPage extends GetView<RegistroUsuarioController> {
         ),
         color: Colors.blueGrey[100],
         child:  Text(
-          'REGISTRARSE',
+          'Registrarse',
           style: TextStyle(
             color: AppConfig.colorBarras,
             letterSpacing: 1.5,
@@ -227,7 +217,7 @@ class RegistroUsuarioPage extends GetView<RegistroUsuarioController> {
         validator: validator,
         keyboardType:keyboardType,
         decoration:  InputDecoration(
-            icon: Icon(iconData, color: Colors.blue),
+            icon: Icon(iconData, color: Colors.white),
             border: OutlineInputBorder(),
             labelText: labelText,
             hintText: hintText,
@@ -246,7 +236,7 @@ class RegistroUsuarioPage extends GetView<RegistroUsuarioController> {
           validator: validator,
           keyboardType:keyboardType,
           decoration:  InputDecoration(
-              icon: Icon(iconData, color: Colors.blue),
+              icon: Icon(iconData, color: Colors.white),
               border: OutlineInputBorder(),
               labelText: labelText,
               hintText: hintText,
@@ -279,7 +269,7 @@ class RegistroUsuarioPage extends GetView<RegistroUsuarioController> {
         controller: controller.controllerCedula,
         keyboardType: TextInputType.number,
         decoration: const InputDecoration(
-            icon: Icon(Icons.payment, color: Colors.blue),
+            icon: Icon(Icons.payment, color: Colors.white),
             border: OutlineInputBorder(),
             labelText: 'Cédula',
             hintText: 'Ingrese su número de cédula',
@@ -395,7 +385,7 @@ class RegistroUsuarioPage extends GetView<RegistroUsuarioController> {
         decoration: const InputDecoration(
             icon: Icon(
               Icons.contact_phone,
-              color: Colors.blue,
+              color: Colors.white,
             ),
             border: OutlineInputBorder(),
             labelText: 'Número de Contacto',
@@ -415,7 +405,7 @@ class RegistroUsuarioPage extends GetView<RegistroUsuarioController> {
         decoration: const InputDecoration(
             icon: Icon(
               Icons.email,
-              color: Colors.blue,
+              color: Colors.white,
             ),
             border: OutlineInputBorder(),
             labelText: 'Email de Contacto',
