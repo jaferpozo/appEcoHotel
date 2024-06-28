@@ -5,6 +5,7 @@ class DetalleHabitacionPage extends GetView<DetalleHabitacionController> {
 
   @override
   Widget build(BuildContext context) {
+
     return WorkAreaMenuPageWidget(
         btnAtras: true,
 

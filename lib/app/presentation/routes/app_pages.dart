@@ -41,5 +41,10 @@ class AppPages {
         page: () => DetalleHabitacionPage(),
         binding: DetalleHabitacionBinding()),
 
+    getPageConfig(
+        name: AppRoutes.DETALLE_HABITACION_PAGO,
+        page: () => PagoPage(),
+        binding: PagoBinding()),
+
   ];
 }
