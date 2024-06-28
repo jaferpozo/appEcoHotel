@@ -20,6 +20,7 @@ import 'controllers.dart';
 import 'login/local_widgets/wgLogin.dart';
 import 'login/local_widgets/workAreaLoginPageWidget.dart';
 import 'menu/local_widgets/desing.dart';
+import 'menu/local_widgets/detalle_habitacion.dart';
 
 
 part 'splash/splash_page.dart';
