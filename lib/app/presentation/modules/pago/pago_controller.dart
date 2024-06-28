@@ -1,6 +1,6 @@
 part of '../controllers.dart';
 
-class DetalleHabitacionController extends GetxController {
+class PagoController extends GetxController {
   RxBool peticionServerState = false.obs;
   HabitacionModel habitacionModel = HabitacionModel(
       precio: 0,
@@ -40,9 +40,7 @@ class DetalleHabitacionController extends GetxController {
 
   reservar(){
 
-
-
-    Get.toNamed(AppRoutes.DETALLE_HABITACION_PAGO);
+    DialogosDesingWidget.getDialogoX(contenido: PagoConTarjetaPage());
 
   }
 }

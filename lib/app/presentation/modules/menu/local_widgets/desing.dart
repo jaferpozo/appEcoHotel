@@ -8,8 +8,18 @@ import '../../../routes/app_routes.dart';
 
 class Desing extends StatelessWidget {
   final List<HabitacionModel> habitaciones;
+  final GestureTapCallback onTap1;
+  final GestureTapCallback onTap2;
+  final GestureTapCallback onTap3;
+  final List<bool> select;
 
-  const Desing({super.key, required this.habitaciones});
+  const Desing(
+      {super.key,
+      required this.habitaciones,
+      required this.onTap1,
+      required this.onTap2,
+      required this.onTap3,
+      required this.select});
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +39,12 @@ class Desing extends StatelessWidget {
                 onTap: () {
                   Get.toNamed(AppRoutes.DETALLE_HABITACION,
                       arguments: {"data": data});
-
-
                 },
                 img: data.img,
                 title: data.titulo,
                 distance: data.detalle,
                 date: 'Jan 1 - 6',
-                price: '\$'+data.precio.toString(),
+                price: '\$' + data.precio.toString(),
                 rating: data.puntuacion,
               );
             },
@@ -69,31 +77,48 @@ class Desing extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          getDesingIconsCategoria(icon: Icons.house_sharp, text: "text1"),
-          getDesingIconsCategoria(icon: Icons.person_2, text: "text1"),
-          getDesingIconsCategoria(icon: Icons.castle, text: "text1"),
-          getDesingIconsCategoria(icon: Icons.castle, text: "text1"),
+          getDesingIconsCategoria(
+            icon: Icons.house_sharp,
+            text: "text1",
+            onTap: onTap1,
+            select: select[0]
+
+          ),
+          getDesingIconsCategoria(
+            select: select[1],
+              icon: Icons.person_2, text: "text1", onTap: onTap2),
+          getDesingIconsCategoria(
+              select: select[2],
+              icon: Icons.castle, text: "text1", onTap: onTap3),
         ],
       ),
     );
   }
 
-  getDesingIconsCategoria({required IconData icon, required String text}) {
+  getDesingIconsCategoria(
+      {required IconData icon,
+      required String text,
+        required bool select,
+      final GestureTapCallback? onTap}) {
     final color = Colors.white;
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      child: Container(
-        child: Column(
-          children: [
-            Icon(
-              icon,
-              color: color,
+
+    return GestureDetector(
+        onTap: onTap,
+        child: Container(
+          color:select? Colors.grey:Colors.transparent,
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          child: Container(
+            child: Column(
+              children: [
+                Icon(
+                  icon,
+                  color: color,
+                ),
+                Text(text, style: TextStyle(color: color)),
+              ],
             ),
-            Text(text, style: TextStyle(color: color)),
-          ],
-        ),
-      ),
-    );
+          ),
+        ));
   }
 
   Widget buildListItem(
@@ -138,25 +163,33 @@ class Desing extends StatelessWidget {
                         fontSize: 16,
                       ),
                     ),
-                    Text(distance, style: TextStyle(
-                      color: Colors.white70,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                    ),),
-
-                    Text(price.toString(), style: TextStyle(
-                      color: Colors.white70,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                    ),),
+                    Text(
+                      distance,
+                      style: TextStyle(
+                        color: Colors.white70,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ),
+                    ),
+                    Text(
+                      price.toString(),
+                      style: TextStyle(
+                        color: Colors.white70,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ),
+                    ),
                     Row(
                       children: [
                         Icon(Icons.star, color: Colors.amber),
-                        Text(rating.toString(), style: TextStyle(
-                          color: Colors.white70,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12,
-                        ),),
+                        Text(
+                          rating.toString(),
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                          ),
+                        ),
                       ],
                     ),
                   ],

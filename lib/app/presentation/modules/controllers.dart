@@ -37,5 +37,6 @@ part 'menu/menu_principal_controller.dart';
 part 'login/login_controller.dart';
 part 'registroUsuario/registro_usuario_controller.dart';
 part 'detalle_habitacion/detalle_habitacion_controller.dart';
+part 'pago/pago_controller.dart';
 
 

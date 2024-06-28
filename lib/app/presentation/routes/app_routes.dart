@@ -11,4 +11,6 @@ class AppRoutes{
 
   static const DETALLE_HABITACION="/detalle_habitacion";
 
+  static const DETALLE_HABITACION_PAGO="/detalle_habitacion_pago";
+
 }

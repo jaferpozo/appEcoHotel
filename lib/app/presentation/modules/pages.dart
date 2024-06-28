@@ -4,9 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:milicoreria/app/presentation/modules/pago/local_widgets/CreditCardForm.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
+import '../../../main.dart';
 import '../../core/app_config.dart';
 import '../../core/utils/check_internet_conexion.dart';
 import '../../core/utils/responsiveUtil.dart';
@@ -29,5 +31,6 @@ part 'menu/menu_principal_page.dart';
 part 'login/login_page.dart';
 part 'registroUsuario/registro_usuario_page.dart';
 part 'detalle_habitacion/detalle_habitacion_page.dart';
+part 'pago/pago_page.dart';
 
 

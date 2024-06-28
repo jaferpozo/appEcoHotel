@@ -10,4 +10,5 @@ part 'login/login_binding.dart';
 part 'menu/menu_principal_binding.dart';
 part 'registroUsuario/registro_usuario_binding.dart';
 part 'detalle_habitacion/detalle_habitacion_binding.dart';
+part 'pago/pago_binding.dart';
 

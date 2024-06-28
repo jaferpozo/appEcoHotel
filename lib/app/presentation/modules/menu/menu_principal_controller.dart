@@ -18,7 +18,9 @@ class MenuPrincipalController extends GetxController {
   String estadoConex = "";
   String acuerdo = "";
 
-  List<HabitacionModel> habitaciones = [
+  List<bool> select=[true,false,false];
+
+   RxList<HabitacionModel> habitaciones = [
     HabitacionModel(
         precio: 15,
         titulo: "Habitacion 1",
@@ -50,14 +52,116 @@ class MenuPrincipalController extends GetxController {
         puntuacion: 5,
         visitas: 28,
         img: AppImages.imgH4),
+  ].obs;
+
+  List<HabitacionModel> habitaciones1 = [
+    HabitacionModel(
+        precio: 15,
+        titulo: "Habitacion 10",
+        detalle: "Descripcion",
+        puntuacion: 4,
+        visitas: 35,
+        img: AppImages.imgH1),
+
+    HabitacionModel(
+        precio: 25,
+        titulo: "Habitacion 11",
+        detalle: "Descripcion",
+        puntuacion: 4.3,
+        visitas: 40,
+        img: AppImages.imgH2),
+
+    HabitacionModel(
+        precio: 30,
+        titulo: "Habitacion 12",
+        detalle: "Descripcion",
+        puntuacion: 4.5,
+        visitas: 20,
+        img: AppImages.imgH3),
+
+    HabitacionModel(
+        precio: 40,
+        titulo: "Habitacion 13",
+        detalle: "Descripcion",
+        puntuacion: 5,
+        visitas: 28,
+        img: AppImages.imgH4),
+  ];
+
+  List<HabitacionModel> habitaciones2 = [
+    HabitacionModel(
+        precio: 15,
+        titulo: "a 23",
+        detalle: "Descripcion",
+        puntuacion: 4,
+        visitas: 35,
+        img: AppImages.imgH1),
+
+    HabitacionModel(
+        precio: 25,
+        titulo: "a 21",
+        detalle: "Descripcion",
+        puntuacion: 4.3,
+        visitas: 40,
+        img: AppImages.imgH2),
+
+    HabitacionModel(
+        precio: 30,
+        titulo: "aa 23",
+        detalle: "Descripcion",
+        puntuacion: 4.5,
+        visitas: 20,
+        img: AppImages.imgH3),
+
+    HabitacionModel(
+        precio: 40,
+        titulo: "aaaa 4",
+        detalle: "Descripcion",
+        puntuacion: 5,
+        visitas: 28,
+        img: AppImages.imgH4),
+  ];
+
+
+  List<HabitacionModel> habitaciones3 = [
+    HabitacionModel(
+        precio: 15,
+        titulo: "ttt 1",
+        detalle: "Descripcion",
+        puntuacion: 4,
+        visitas: 35,
+        img: AppImages.imgH1),
+
+    HabitacionModel(
+        precio: 25,
+        titulo: "ttt 2",
+        detalle: "Descripcion",
+        puntuacion: 4.3,
+        visitas: 40,
+        img: AppImages.imgH2),
+
+    HabitacionModel(
+        precio: 30,
+        titulo: "tttt 3",
+        detalle: "Descripcion",
+        puntuacion: 4.5,
+        visitas: 20,
+        img: AppImages.imgH3),
+
+    HabitacionModel(
+        precio: 40,
+        titulo: "tttt 4",
+        detalle: "Descripcion",
+        puntuacion: 5,
+        visitas: 28,
+        img: AppImages.imgH4),
   ];
 
   RxString userPref = ''.obs;
 
   @override
   void onInit() {
-    verificaTConexion();
-    _verificaDatos();
+
     // TODO: el contolloler se ha creado pero la vista no se ha renderizado
     super.onInit();
   }
@@ -74,59 +178,14 @@ class MenuPrincipalController extends GetxController {
 
   final LocalStoreImpl _localStoreImpl = Get.find<LocalStoreImpl>();
 
-  _verificaDatos() async {
-    print("SPLASH: verificando datos");
-    //userPref.value = await _localStoreImpl.getDatosUsuario();
-    //acuerdo = await _localStoreImpl.getDatosAcuerdo();
-  }
 
-  verificarGps() async {
-    //se verifica si el GPS del dispositivo seta activo y tiene permisos
-    bool verificarGps = await gpsController.verificarGPS();
-    if (verificarGps) {
-      gpsController.iniciarSeguimiento();
-      // iniciarSeguimiento1();
-      if (AppConfig.ubicacion.value.latitude == 0.0) {
-        DialogosAwesome.getInformation(
-            descripcion: "Las coordenas aun no estan lista vuelva a intentar");
-      } else {
-        gpsController.cancelarSeguimiento();
-        Get.toNamed(AppRoutes.MAPAUPC);
-      }
-    }
-  }
 
-  connectionStatusController() {
-    connectionSubscription = internetChecker
-        .internetStatus()
-        .listen((newStatus) => status.value = newStatus);
-    if (status.value == ConnectionStatus.online) {
-      verificaTConexion();
-    }
-  }
 
-  verificaTConexion() async {
-    try {
-      final result = await InternetAddress.lookup('google.com');
-      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        estadoConex = 'S';
-        print('connected');
-        cargarDatosLista();
-      }
-    } on SocketException catch (_) {
-      estadoConex = 'N';
-    }
-  }
+setHabitacion( List<HabitacionModel> habitacion){
+  habitaciones.value=habitacion;
 
-  cargarDatosLista() async {
-    try {
-      listaModulo.clear();
-      peticionServerState(true);
+}
 
-      peticionServerState(false);
-    } on ServerException catch (e) {
-      peticionServerState(false);
-      DialogosAwesome.getError(descripcion: e.cause);
-    }
-  }
+
+
 }
