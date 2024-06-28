@@ -34,7 +34,7 @@ class DialogosDesingWidget {
                   ),
                 ],
               ),
-              child: Column(
+              child: SingleChildScrollView(child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Text(
@@ -52,7 +52,7 @@ class DialogosDesingWidget {
                     child: botones != null ? botones : Container(),
                   ),
                 ],
-              ),
+              ),),
             ),
             Positioned(
               right: -20,

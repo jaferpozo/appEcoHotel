@@ -17,15 +17,17 @@ import '../routes/app_routes.dart';
 import '../widgets/custom_widgets.dart';
 
 import 'controllers.dart';
+import 'detalle_habitacion/local_widgets/pago_tarjeta.dart';
 import 'login/local_widgets/wgLogin.dart';
 import 'login/local_widgets/workAreaLoginPageWidget.dart';
 import 'menu/local_widgets/desing.dart';
-import 'menu/local_widgets/detalle_habitacion.dart';
+import 'detalle_habitacion/local_widgets/detalle_habitacion.dart';
 
 
 part 'splash/splash_page.dart';
 part 'menu/menu_principal_page.dart';
 part 'login/login_page.dart';
 part 'registroUsuario/registro_usuario_page.dart';
+part 'detalle_habitacion/detalle_habitacion_page.dart';
 
 

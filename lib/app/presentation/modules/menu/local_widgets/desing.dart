@@ -1,119 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:milicoreria/app/core/values/app_images.dart';
 import 'package:milicoreria/app/presentation/widgets/custom_widgets.dart';
 
+import '../../../../data/models/models.dart';
+import '../../../routes/app_routes.dart';
+
 class Desing extends StatelessWidget {
+  final List<HabitacionModel> habitaciones;
+
+  const Desing({super.key, required this.habitaciones});
+
   @override
   Widget build(BuildContext context) {
-
     return Column(
       children: [
         // Barra de búsqueda
-       // getBtnFind(),
+        // getBtnFind(),
         // Iconos de categorías
         getIconsCategoria(),
         // Lista de elementos
         Expanded(
-          child: ListView(
-            children: [
-              buildListItem(
-                onTap: (){
-                  DialogosAwesome.getInformation(descripcion: "descripcion");
+          child: ListView.builder(
+            itemCount: habitaciones.length,
+            itemBuilder: (BuildContext context, int i) {
+              HabitacionModel data = habitaciones[i];
+              return buildListItem(
+                onTap: () {
+                  Get.toNamed(AppRoutes.DETALLE_HABITACION,
+                      arguments: {"data": data});
+
+
                 },
-                imageUrl: 'https://www.imghoteles.com/wp-content/uploads/sites/1709/nggallery/mobile-pics//slider-header-mobile4.jpg',
-                title: 'Nusapenida, Indonesia',
-                distance: '987 kilometers away',
+                img: data.img,
+                title: data.titulo,
+                distance: data.detalle,
                 date: 'Jan 1 - 6',
-                price: '\$234 /noche',
-                rating: 3.0,
-              ),
-              buildListItem(
-                imageUrl: 'https://www.imghoteles.com/wp-content/uploads/sites/1709/nggallery/mobile-pics//lucero-mobile.jpg',
-                title: 'Nusapenida, Indonesia',
-                distance: '987 kilometers away',
-                date: 'Jan 1 - 6',
-                price: '\$234 /noche',
-                rating: 5.0,
-              ),
-              buildListItem(
-                imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRonKxRHgVJyb7ftwoKF2EJF0pUTbe0LSUKsQ&s',
-                title: 'Nusapenida, Indonesia',
-                distance: '987 kilometers away',
-                date: 'Jan 1 - 6',
-                price: '\$234 /noche',
-                rating: 5.0,
-              ),
-              // Agrega más elementos aquí
-            ],
+                price: '\$'+data.precio.toString(),
+                rating: data.puntuacion,
+              );
+            },
           ),
         ),
         // Barra de navegación inferior
-
       ],
-    );
-
-    return Scaffold(
-      bottomNavigationBar:      BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.explore),
-            label: 'Explore',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Wishlists',
-          ),
-
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-      ),
-      body: SafeArea(
-
-        child: Column(
-          children: [
-            // Barra de búsqueda
-            getBtnFind(),
-            // Iconos de categorías
-            getIconsCategoria(),
-            // Lista de elementos
-            Expanded(
-              child: ListView(
-                children: [
-                  buildListItem(
-                    imageUrl: 'https://www.imghoteles.com/wp-content/uploads/sites/1709/nggallery/mobile-pics//slider-header-mobile4.jpg',
-                    title: 'Nusapenida, Indonesia',
-                    distance: '987 kilometers away',
-                    date: 'Jan 1 - 6',
-                    price: '\$234 /night',
-                    rating: 5.0,
-                  ),
-                  buildListItem(
-                    imageUrl: 'https://www.imghoteles.com/wp-content/uploads/sites/1709/nggallery/mobile-pics//lucero-mobile.jpg',
-                    title: 'Nusapenida, Indonesia',
-                    distance: '987 kilometers away',
-                    date: 'Jan 1 - 6',
-                    price: '\$234 /night',
-                    rating: 5.0,
-                  ),
-                  buildListItem(
-                    imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRonKxRHgVJyb7ftwoKF2EJF0pUTbe0LSUKsQ&s',
-                    title: 'Nusapenida, Indonesia',
-                    distance: '987 kilometers away',
-                    date: 'Jan 1 - 6',
-                    price: '\$234 /night',
-                    rating: 5.0,
-                  ),
-                  // Agrega más elementos aquí
-                ],
-              ),
-            ),
-            // Barra de navegación inferior
-
-          ],
-        ),
-      ),
     );
   }
 
@@ -143,7 +73,6 @@ class Desing extends StatelessWidget {
           getDesingIconsCategoria(icon: Icons.person_2, text: "text1"),
           getDesingIconsCategoria(icon: Icons.castle, text: "text1"),
           getDesingIconsCategoria(icon: Icons.castle, text: "text1"),
-
         ],
       ),
     );
@@ -152,80 +81,91 @@ class Desing extends StatelessWidget {
   getDesingIconsCategoria({required IconData icon, required String text}) {
     final color = Colors.white;
     return Container(
-
       padding: EdgeInsets.symmetric(horizontal: 10),
       child: Container(
-
-
         child: Column(
-        children: [
-          Icon(
-            icon,
-            color: color,
-          ),
-          Text(text, style: TextStyle(color: color)),
-        ],
-      ),),
+          children: [
+            Icon(
+              icon,
+              color: color,
+            ),
+            Text(text, style: TextStyle(color: color)),
+          ],
+        ),
+      ),
     );
   }
 
-  Widget buildListItem({
-    required String imageUrl,
-    required String title,
-    required String distance,
-    required String date,
-    required String price,
-    required double rating,
-    GestureTapCallback? onTap
-  }) {
+  Widget buildListItem(
+      {required String img,
+      required String title,
+      required String distance,
+      required String date,
+      required String price,
+      required double rating,
+      GestureTapCallback? onTap}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: onTap,
-
         child: Card(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Imagen del lugar
-            Container(
-              height: 200,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(imageUrl),
-                  fit: BoxFit.cover,
+          color: Colors.transparent,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Imagen del lugar
+              Container(
+                height: 200,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(img),
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                borderRadius: BorderRadius.circular(10),
               ),
-            ),
-            // Información del lugar
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
+              // Información del lugar
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
                     ),
-                  ),
-                  Text(distance),
-                  Text(date),
-                  Text(price),
-                  Row(
-                    children: [
-                      Icon(Icons.star, color: Colors.amber),
-                      Text(rating.toString()),
-                    ],
-                  ),
-                ],
+                    Text(distance, style: TextStyle(
+                      color: Colors.white70,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                    ),),
+
+                    Text(price.toString(), style: TextStyle(
+                      color: Colors.white70,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                    ),),
+                    Row(
+                      children: [
+                        Icon(Icons.star, color: Colors.amber),
+                        Text(rating.toString(), style: TextStyle(
+                          color: Colors.white70,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                        ),),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),),
+      ),
     );
   }
 }

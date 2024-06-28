@@ -10,6 +10,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:milicoreria/app/core/values/app_images.dart';
+import 'package:milicoreria/app/data/models/models.dart';
 import 'package:network_info_plus/network_info_plus.dart';
 
 import '../../core/app_config.dart';
@@ -27,10 +29,13 @@ import '../routes/app_routes.dart';
 import '../widgets/custom_widgets.dart';
 import 'package:geolocator/geolocator.dart' as myGeolocator;
 
+import 'detalle_habitacion/local_widgets/pago_tarjeta.dart';
+
 
 part 'splash/splash_controller.dart';
 part 'menu/menu_principal_controller.dart';
 part 'login/login_controller.dart';
 part 'registroUsuario/registro_usuario_controller.dart';
+part 'detalle_habitacion/detalle_habitacion_controller.dart';
 
 
