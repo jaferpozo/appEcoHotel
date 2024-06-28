@@ -18,11 +18,45 @@ class MenuPrincipalController extends GetxController {
   String estadoConex = "";
   String acuerdo = "";
 
+  List<HabitacionModel> habitaciones = [
+    HabitacionModel(
+        precio: 15,
+        titulo: "Habitacion 1",
+        detalle: "Descripcion",
+        puntuacion: 4,
+        visitas: 35,
+        img: AppImages.imgH1),
+
+    HabitacionModel(
+        precio: 25,
+        titulo: "Habitacion 2",
+        detalle: "Descripcion",
+        puntuacion: 4.3,
+        visitas: 40,
+        img: AppImages.imgH2),
+
+    HabitacionModel(
+        precio: 30,
+        titulo: "Habitacion 3",
+        detalle: "Descripcion",
+        puntuacion: 4.5,
+        visitas: 20,
+        img: AppImages.imgH3),
+
+    HabitacionModel(
+        precio: 40,
+        titulo: "Habitacion 4",
+        detalle: "Descripcion",
+        puntuacion: 5,
+        visitas: 28,
+        img: AppImages.imgH4),
+  ];
+
   RxString userPref = ''.obs;
 
   @override
   void onInit() {
-   verificaTConexion();
+    verificaTConexion();
     _verificaDatos();
     // TODO: el contolloler se ha creado pero la vista no se ha renderizado
     super.onInit();
@@ -51,14 +85,13 @@ class MenuPrincipalController extends GetxController {
     bool verificarGps = await gpsController.verificarGPS();
     if (verificarGps) {
       gpsController.iniciarSeguimiento();
-     // iniciarSeguimiento1();
-      if (AppConfig.ubicacion.value.latitude==0.0) {
+      // iniciarSeguimiento1();
+      if (AppConfig.ubicacion.value.latitude == 0.0) {
         DialogosAwesome.getInformation(
             descripcion: "Las coordenas aun no estan lista vuelva a intentar");
-      }else{
+      } else {
         gpsController.cancelarSeguimiento();
         Get.toNamed(AppRoutes.MAPAUPC);
-
       }
     }
   }
@@ -67,10 +100,9 @@ class MenuPrincipalController extends GetxController {
     connectionSubscription = internetChecker
         .internetStatus()
         .listen((newStatus) => status.value = newStatus);
-    if (status.value == ConnectionStatus.online){
+    if (status.value == ConnectionStatus.online) {
       verificaTConexion();
     }
-
   }
 
   verificaTConexion() async {
@@ -88,16 +120,13 @@ class MenuPrincipalController extends GetxController {
 
   cargarDatosLista() async {
     try {
-
       listaModulo.clear();
       peticionServerState(true);
 
       peticionServerState(false);
-   } on ServerException catch (e) {
+    } on ServerException catch (e) {
       peticionServerState(false);
       DialogosAwesome.getError(descripcion: e.cause);
     }
   }
-
-
 }

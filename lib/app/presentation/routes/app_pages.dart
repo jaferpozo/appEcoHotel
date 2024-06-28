@@ -36,5 +36,10 @@ class AppPages {
         page: () => RegistroUsuarioPage(),
         binding: RegistroUsuarioBinding()),
 
+    getPageConfig(
+        name: AppRoutes.DETALLE_HABITACION,
+        page: () => DetalleHabitacionPage(),
+        binding: DetalleHabitacionBinding()),
+
   ];
 }

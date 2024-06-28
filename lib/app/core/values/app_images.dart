@@ -12,9 +12,16 @@ class AppImages{
   //-*********************** IMAGENES *******************************
 
 
-
-
   static const imgCabana = _rutaImg + "cabana.jpg";
+
+
+
+
+
+  static const imgH1 = _rutaImg + "habitacion1.jpg";
+  static const imgH2 = _rutaImg + "habitacion2.jpg";
+  static const imgH3 = _rutaImg + "habitacion3.jpg";
+  static const imgH4 = _rutaImg + "habitacion4.jpg";
 
 
   static const imgarea = _rutaImg + "loginEco.png";

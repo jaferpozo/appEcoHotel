@@ -25,3 +25,5 @@ part 'detalle_punto_delito_model.dart';
 part 'detalle_data_clock_model.dart';
 part 'coordenadas_model.dart';
 part 'poligono_model.dart';
+
+part 'local/habitacion_model.dart';

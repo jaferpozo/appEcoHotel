@@ -1,26 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:milicoreria/app/core/utils/responsiveUtil.dart';
 import 'package:milicoreria/app/core/values/app_images.dart';
 import 'package:milicoreria/app/presentation/widgets/custom_widgets.dart';
 
+import '../../../../data/models/models.dart';
+
 class DetalleHabitacion extends StatelessWidget {
-  final String nombreHabitacion;
-  final String detalleHabitacion;
-  final double starCount;
-  final double precio;
-  final int numVisitas;
+
+
+  final HabitacionModel habitacionModel;
+
   final VoidCallback onPressed;
 
   const DetalleHabitacion(
       {super.key,
-      required this.starCount,
-      required this.numVisitas,
-      required this.nombreHabitacion,
-      required this.detalleHabitacion,
-      required this.precio,
-      required this.onPressed});
+
+      required this.onPressed, required this.habitacionModel});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +32,7 @@ class DetalleHabitacion extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Image.asset(
-                  AppImages.imgCabana, // Reemplaza con la URL de la imagen
+                  habitacionModel.img, // Reemplaza con la URL de la imagen
                   fit: BoxFit.cover,
                   height: 250,
                   width: double.infinity,
@@ -44,7 +43,7 @@ class DetalleHabitacion extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        nombreHabitacion,
+                        habitacionModel.titulo,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 24,
@@ -53,7 +52,7 @@ class DetalleHabitacion extends StatelessWidget {
                       ),
                       SizedBox(height: 8),
                       Text(
-                        detalleHabitacion,
+                        habitacionModel.detalle,
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.white.withOpacity(0.6),
@@ -86,6 +85,25 @@ class DetalleHabitacion extends StatelessWidget {
           height: responsive.altoP(80),
           width: double.infinity,
         ),
+
+        CupertinoButton(
+          minSize: responsive.isVertical()
+              ? responsive.altoP(6)
+              : responsive.anchoP(5),
+          padding: const EdgeInsets.all(3),
+          borderRadius: BorderRadius.circular(35),
+          color: Colors.black,
+          onPressed: () =>
+              Get.back(),
+          //volver atras
+          child: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+            size: responsive.isVertical()
+                ? responsive.altoP(3.5)
+                : responsive.anchoP(3.5),
+          ),
+        ),
         Positioned(
           bottom: responsive.altoP(1),
           child: Container(
@@ -95,7 +113,7 @@ class DetalleHabitacion extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  'Precio: \$' + precio.toString(),
+                  'Precio: \$' + habitacionModel.precio.toString(),
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -120,6 +138,7 @@ class DetalleHabitacion extends StatelessWidget {
   }
 
   Widget getCaslificacion() {
+    double starCount=habitacionModel.puntuacion;
     return Container(
       padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
@@ -173,7 +192,7 @@ class DetalleHabitacion extends StatelessWidget {
           Column(
             children: [
               Text(
-                numVisitas.toString(),
+                habitacionModel.visitas.toString(),
                 style: TextStyle(
                     color: Colors.white70, fontWeight: FontWeight.bold),
               ),

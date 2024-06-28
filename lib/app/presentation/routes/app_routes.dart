@@ -8,4 +8,7 @@ class AppRoutes{
   static const MAPAUPC="/mapaUpc";
   static const REGISTROUSUARIO="/registroUsuario";
   static const LOGIN="/loginUsuario";
+
+  static const DETALLE_HABITACION="/detalle_habitacion";
+
 }
