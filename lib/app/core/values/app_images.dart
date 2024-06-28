@@ -10,7 +10,15 @@ class AppImages{
   static const audio_Alerta = _rutaAudio + "alerta.mp3";
 
   //-*********************** IMAGENES *******************************
-  static const imgarea = _rutaImg + "login1.png";
+
+
+
+
+  static const imgCabana = _rutaImg + "cabana.jpg";
+
+
+  static const imgarea = _rutaImg + "loginEco.png";
+
   static const imgareaFondo = _rutaImg + "area.png";
   static const imgSplash = _rutaImg+ "splash.png";
   static const icon_clave = _rutaImg + "icon_clave.png";

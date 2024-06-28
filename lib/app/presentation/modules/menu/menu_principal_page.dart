@@ -11,7 +11,14 @@ class MenuPrincipalPage extends GetView<MenuPrincipalController> {
       btnAtras: false,
       pantallaIrAtras: () => Get.back(),
       peticionServer: controller.peticionServerState,
-      contenido: Desing(),
+      contenido: DetalleHabitacion(
+        onPressed: (){},
+        precio: 45,
+        nombreHabitacion: "Habitacion 1",
+        detalleHabitacion: "el detatat agagga hahahha hahahha hahha hahahha hahahzh",
+        numVisitas: 34,
+        starCount: 3.5,
+      ),
     );
   }
 
